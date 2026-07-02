@@ -1,528 +1,331 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Joy Ghatak | Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Portfolio of Joy Ghatak, B.Tech CSE student and aspiring software developer." />
-  <style>
-    :root {
-      --bg: #050816;
-      --bg-alt: #0b1120;
-      --card: #020617;
-      --accent: #38bdf8;
-      --accent-soft: rgba(56,189,248,0.15);
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --border: #1f2937;
-      --radius-xl: 18px;
-      --shadow-soft: 0 18px 40px rgba(15,23,42,0.6);
-    }
+<meta charset="UTF-8" />
+<title>Joy Ghatak — Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Portfolio of Joy Ghatak, B.Tech CSE student building AI/ML systems and software." />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap');
 
-    * {
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
+  :root{
+    --ink:        #0a1119;
+    --ink-2:      #101a26;
+    --ink-3:      #142131;
+    --line:       #1e2f40;
+    --line-soft:  #16232f;
+    --paper:      #e9edf1;
+    --muted:      #7d90a3;
+    --muted-2:    #536376;
+    --brass:      #e3a33e;
+    --brass-dim:  #8a672c;
+    --teal:       #6bd9c6;
+    --good:       #6bd98a;
+    --radius:     7px;
+    --f-display:  'Fraunces', serif;
+    --f-mono:     'IBM Plex Mono', monospace;
+    --f-body:     'Inter', system-ui, sans-serif;
+  }
 
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #0f172a 0, #020617 55%, #000 100%);
-      color: var(--text);
-      line-height: 1.6;
-    }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 44px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 44px),
+      var(--ink);
+    color:var(--paper);
+    font-family:var(--f-body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{ color:var(--teal); text-decoration:none; }
+  a:hover{ text-decoration:underline; }
+  ::selection{ background:var(--brass); color:#0a1119; }
 
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
+  :focus-visible{ outline:2px solid var(--brass); outline-offset:3px; }
 
-    /* Layout */
-    .container {
-      width: 100%;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 1.2rem;
-    }
+  .container{ width:100%; max-width:1080px; margin:0 auto; padding:0 1.4rem; }
 
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(14px);
-      background: linear-gradient(to bottom, rgba(15,23,42,0.98), rgba(15,23,42,0.75), transparent);
-      border-bottom: 1px solid rgba(31,41,55,0.7);
-    }
+  /* ---------- header ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(10,17,25,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:0.85rem 0; gap:1rem; flex-wrap:wrap;
+  }
+  .brand{
+    font-family:var(--f-mono); font-size:0.78rem; letter-spacing:0.06em;
+    color:var(--paper); display:flex; align-items:center; gap:0.5rem;
+  }
+  .brand .dot{ width:7px; height:7px; border-radius:50%; background:var(--good); box-shadow:0 0 8px var(--good); }
+  .nav-links{ display:flex; flex-wrap:wrap; gap:0.2rem; font-family:var(--f-mono); font-size:0.76rem; }
+  .nav-links a{
+    color:var(--muted); padding:0.32rem 0.6rem; border-radius:4px;
+  }
+  .nav-links a:hover{ color:var(--brass); background:var(--ink-2); text-decoration:none; }
 
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.7rem 0;
-    }
+  main{ padding:2.6rem 0 4rem; }
+  section{ margin-bottom:4.2rem; scroll-margin-top:4.5rem; }
 
-    .brand {
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-size: 0.95rem;
-      color: var(--muted);
-    }
+  .dir-label{
+    font-family:var(--f-mono); font-size:0.76rem; color:var(--brass);
+    letter-spacing:0.02em; display:block; margin-bottom:0.5rem;
+  }
+  .dir-label::before{ content:'~/'; color:var(--muted-2); }
 
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.7rem;
-      font-size: 0.9rem;
-    }
+  .section-title{
+    font-family:var(--f-display); font-weight:600; font-size:1.65rem;
+    margin:0 0 1.3rem 0; color:var(--paper);
+    display:flex; align-items:baseline; gap:0.6rem;
+  }
+  .section-title .prompt{ font-family:var(--f-mono); color:var(--muted-2); font-size:1.1rem; }
 
-    .nav-links a {
-      padding: 0.3rem 0.7rem;
-      border-radius: 999px;
-      border: 1px solid transparent;
-    }
+  /* ---------- hero ---------- */
+  .hero{
+    display:grid; grid-template-columns:minmax(0,3.1fr) minmax(0,2.1fr);
+    gap:2.4rem; align-items:start; margin-bottom:4.6rem; padding-top:1.2rem;
+  }
+  .status-tag{
+    display:inline-flex; align-items:center; gap:0.5rem;
+    font-family:var(--f-mono); font-size:0.72rem; color:var(--muted);
+    border:1px solid var(--line); border-radius:999px; padding:0.3rem 0.75rem;
+    margin-bottom:1.1rem;
+  }
+  .status-tag .dot{ width:6px; height:6px; border-radius:50%; background:var(--good); box-shadow:0 0 6px var(--good); }
 
-    .nav-links a:hover {
-      border-color: var(--accent-soft);
-      background: rgba(15,23,42,0.9);
-    }
+  .hero h1{
+    font-family:var(--f-display); font-weight:700; font-size:clamp(2.4rem, 5vw, 3.4rem);
+    margin:0 0 0.3rem 0; letter-spacing:-0.01em;
+  }
+  .hero h1 em{ font-style:italic; font-weight:500; color:var(--brass); }
 
-    main {
-      padding: 2.2rem 0 3.5rem;
-    }
+  .hero-subtitle{
+    font-family:var(--f-mono); font-size:0.88rem; color:var(--teal);
+    margin:0 0 1.1rem 0;
+  }
+  .hero-summary{ font-size:1rem; color:#c4cedb; max-width:34rem; }
 
-    section {
-      margin-bottom: 3rem;
-    }
+  .hero-actions{ display:flex; flex-wrap:wrap; gap:0.7rem; margin-top:1.5rem; }
+  .btn{
+    font-family:var(--f-mono); font-size:0.82rem; border-radius:5px;
+    padding:0.6rem 1.05rem; border:1px solid transparent; cursor:pointer;
+    display:inline-flex; align-items:center; gap:0.4rem;
+  }
+  .btn-primary{ background:var(--brass); color:#0a1119; font-weight:600; }
+  .btn-primary:hover{ filter:brightness(1.08); text-decoration:none; }
+  .btn-outline{ border-color:var(--line); color:var(--paper); background:var(--ink-2); }
+  .btn-outline:hover{ border-color:var(--teal); color:var(--teal); text-decoration:none; }
 
-    section:last-of-type {
-      margin-bottom: 0;
-    }
+  /* title block — signature element */
+  .title-block{
+    position:relative; border:1px solid var(--line); background:var(--ink-2);
+    padding:1.3rem 1.3rem 1rem;
+  }
+  .title-block::before, .title-block::after,
+  .title-block .tick-br, .title-block .tick-bl{
+    content:''; position:absolute; width:14px; height:14px;
+  }
+  .title-block::before{ top:-1px; left:-1px; border-top:2px solid var(--brass); border-left:2px solid var(--brass); }
+  .title-block::after{ top:-1px; right:-1px; border-top:2px solid var(--brass); border-right:2px solid var(--brass); }
+  .title-block .tick-bl{ bottom:-1px; left:-1px; border-bottom:2px solid var(--brass); border-left:2px solid var(--brass); }
+  .title-block .tick-br{ bottom:-1px; right:-1px; border-bottom:2px solid var(--brass); border-right:2px solid var(--brass); }
 
-    /* Hero */
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
-      gap: 2.2rem;
-      align-items: center;
-      margin-bottom: 3rem;
-    }
+  .tb-heading{
+    font-family:var(--f-mono); font-size:0.68rem; letter-spacing:0.12em;
+    color:var(--muted-2); text-transform:uppercase; margin-bottom:0.7rem;
+    border-bottom:1px solid var(--line); padding-bottom:0.6rem;
+  }
+  .tb-row{
+    display:flex; justify-content:space-between; gap:1rem;
+    padding:0.42rem 0; border-bottom:1px solid var(--line-soft);
+    font-size:0.85rem;
+  }
+  .tb-row:last-of-type{ border-bottom:none; }
+  .tb-key{ font-family:var(--f-mono); color:var(--muted); font-size:0.74rem; }
+  .tb-val{ color:var(--paper); text-align:right; font-weight:500; }
+  .tb-stack{ display:flex; flex-wrap:wrap; gap:0.35rem; justify-content:flex-end; }
 
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.2rem 0.7rem;
-      border-radius: 999px;
-      background: rgba(15,23,42,0.9);
-      border: 1px solid rgba(55,65,81,0.7);
-      font-size: 0.75rem;
-      color: var(--muted);
-      margin-bottom: 0.75rem;
-    }
+  .pill{
+    font-family:var(--f-mono); font-size:0.68rem; padding:0.16rem 0.5rem;
+    border-radius:4px; border:1px solid var(--line); color:var(--paper);
+  }
 
-    .hero-badge-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 10px rgba(34,197,94,0.8);
-    }
+  /* ---------- about ---------- */
+  .about-text{ font-size:1rem; color:#c4cedb; max-width:44rem; }
+  .about-text .lead{ font-family:var(--f-display); font-style:italic; color:var(--brass); font-size:1.15rem; }
 
-    .hero h1 {
-      font-size: clamp(2.1rem, 4vw, 2.7rem);
-      margin: 0 0 0.4rem 0;
-    }
+  /* ---------- cards ---------- */
+  .card-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:1rem; }
+  .card{
+    background:var(--ink-2); border:1px solid var(--line); border-radius:var(--radius);
+    padding:1.1rem 1.15rem; font-size:0.89rem; transition:border-color .15s ease;
+  }
+  .card:hover{ border-color:var(--brass-dim); }
+  .card-header{ display:flex; justify-content:space-between; align-items:flex-start; gap:0.6rem; margin-bottom:0.35rem; }
+  .card-title{ font-family:var(--f-display); font-weight:600; font-size:1.02rem; color:var(--paper); }
+  .card-subtitle{ font-size:0.78rem; color:var(--muted); margin-bottom:0.5rem; font-family:var(--f-mono); }
+  .card-badge{
+    font-family:var(--f-mono); font-size:0.68rem; padding:0.14rem 0.5rem;
+    border-radius:4px; border:1px solid var(--line); color:var(--muted); white-space:nowrap;
+  }
+  .muted{ color:var(--muted); }
+  ul{ margin:0.4rem 0 0 1.05rem; padding:0; font-size:0.87rem; color:#c4cedb; }
+  li{ margin-bottom:0.2rem; }
 
-    .hero h1 span {
-      background: linear-gradient(to right, #38bdf8, #a855f7);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
+  /* project status */
+  .status{ font-family:var(--f-mono); font-size:0.72rem; display:inline-flex; align-items:center; gap:0.35rem; }
+  .status .dot{ width:6px; height:6px; border-radius:50%; }
+  .status.shipped .dot{ background:var(--good); box-shadow:0 0 6px var(--good); }
+  .status.research .dot{ background:var(--brass); box-shadow:0 0 6px var(--brass); }
+  .status.shipped{ color:var(--good); }
+  .status.research{ color:var(--brass); }
 
-    .hero-subtitle {
-      font-size: 1rem;
-      color: var(--muted);
-      margin-bottom: 0.9rem;
-    }
+  .proj-link{ margin-top:0.6rem; font-family:var(--f-mono); font-size:0.78rem; }
 
-    .hero-summary {
-      font-size: 0.95rem;
-      color: #d1d5db;
-      max-width: 34rem;
-    }
+  /* ---------- skills ---------- */
+  .skills-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:0.9rem; }
+  .skill-chip-row{ display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:0.55rem; }
+  .chip{
+    font-family:var(--f-mono); font-size:0.75rem; padding:0.22rem 0.6rem;
+    border-radius:4px; border:1px solid var(--line); color:var(--paper); background:var(--ink);
+  }
+  .chip-strong{ border-color:var(--brass-dim); color:var(--brass); }
 
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.7rem;
-      margin-top: 1.2rem;
-    }
+  /* ---------- certifications compact list ---------- */
+  .cert-list{ display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:0.7rem; }
+  .cert{
+    display:flex; justify-content:space-between; align-items:center; gap:0.6rem;
+    border:1px solid var(--line); border-radius:var(--radius); padding:0.7rem 0.9rem;
+    background:var(--ink-2); font-size:0.85rem;
+  }
+  .cert:hover{ border-color:var(--brass-dim); }
+  .cert-name{ color:var(--paper); }
+  .cert a{ font-family:var(--f-mono); font-size:0.72rem; white-space:nowrap; }
 
-    .btn {
-      border-radius: 999px;
-      padding: 0.55rem 1.1rem;
-      font-size: 0.9rem;
-      border: 1px solid transparent;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      text-decoration: none;
-    }
+  /* ---------- contact ---------- */
+  .contact-card{ display:grid; grid-template-columns:minmax(0,3fr) minmax(0,2.1fr); gap:1.4rem; align-items:start; }
+  .contact-highlight{
+    border:1px solid var(--line); border-radius:var(--radius); background:var(--ink-2);
+    padding:1.4rem 1.4rem; font-size:0.98rem; color:#c4cedb;
+  }
+  .contact-highlight strong{ color:var(--paper); font-family:var(--f-display); font-size:1.15rem; font-weight:600; }
+  .contact-highlight .prompt-line{
+    font-family:var(--f-mono); font-size:0.8rem; color:var(--teal); margin-top:1rem; display:block;
+  }
 
-    .btn-primary {
-      background: linear-gradient(to right, #0ea5e9, #6366f1);
-      color: white;
-      box-shadow: 0 18px 40px rgba(37,99,235,0.45);
-    }
+  footer{
+    border-top:1px solid var(--line-soft); padding:1.4rem 0 1.6rem; margin-top:2.6rem;
+    font-family:var(--f-mono); font-size:0.76rem; color:var(--muted-2); text-align:center;
+  }
 
-    .btn-primary:hover {
-      filter: brightness(1.05);
-    }
+  /* scroll reveal */
+  .reveal{ opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; }
+  .reveal.in-view{ opacity:1; transform:translateY(0); }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+    html{ scroll-behavior:auto; }
+  }
 
-    .btn-outline {
-      border-color: rgba(75,85,99,0.9);
-      background: rgba(15,23,42,0.9);
-      color: var(--muted);
-    }
-
-    .btn-outline:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    .hero-right {
-      border-radius: 999px;
-      background: radial-gradient(circle at 20% 0, rgba(56,189,248,0.25), transparent 55%),
-                  radial-gradient(circle at 80% 100%, rgba(168,85,247,0.25), transparent 60%),
-                  linear-gradient(to bottom right, rgba(15,23,42,0.95), rgba(2,6,23,0.98));
-      padding: 1.1rem 1.2rem;
-      border: 1px solid rgba(148,163,184,0.2);
-      box-shadow: var(--shadow-soft);
-      max-width: 350px;
-      margin-left: auto;
-    }
-
-    .hero-role {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-      color: var(--muted);
-      margin-bottom: 0.3rem;
-    }
-
-    .hero-name {
-      font-size: 1.15rem;
-      font-weight: 600;
-      margin-bottom: 0.3rem;
-    }
-
-    .hero-tagline {
-      font-size: 0.85rem;
-      color: #cbd5f5;
-      margin-bottom: 0.7rem;
-    }
-
-    .hero-meta {
-      font-size: 0.8rem;
-      color: var(--muted);
-      border-top: 1px solid rgba(51,65,85,0.85);
-      padding-top: 0.6rem;
-      margin-top: 0.6rem;
-    }
-
-    .badge-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-      margin-top: 0.3rem;
-    }
-
-    .pill {
-      font-size: 0.72rem;
-      padding: 0.18rem 0.6rem;
-      border-radius: 999px;
-      border: 1px solid rgba(75,85,99,0.9);
-      color: #e5e7eb;
-      background: rgba(15,23,42,0.9);
-    }
-
-    /* Section titles */
-    .section-title {
-      font-size: 1.2rem;
-      margin-bottom: 0.7rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .section-pill {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--muted);
-      margin-bottom: 0.2rem;
-      display: block;
-    }
-
-    .section-title span.accent {
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      background: var(--accent);
-      box-shadow: 0 0 10px rgba(56,189,248,0.9);
-    }
-
-    /* Cards / Grid */
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1rem;
-    }
-
-    .card {
-      background: radial-gradient(circle at top left, rgba(56,189,248,0.11), transparent 55%),
-                  radial-gradient(circle at bottom right, rgba(168,85,247,0.11), transparent 55%),
-                  var(--card);
-      border-radius: var(--radius-xl);
-      border: 1px solid var(--border);
-      padding: 0.9rem 1rem;
-      box-shadow: 0 10px 30px rgba(15,23,42,0.9);
-      font-size: 0.88rem;
-    }
-
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 0.6rem;
-      margin-bottom: 0.4rem;
-    }
-
-    .card-title {
-      font-weight: 600;
-    }
-
-    .card-subtitle {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-bottom: 0.4rem;
-    }
-
-    .card-badge {
-      font-size: 0.72rem;
-      padding: 0.16rem 0.5rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.7);
-      color: #e5e7eb;
-      white-space: nowrap;
-    }
-
-    .muted {
-      color: var(--muted);
-    }
-
-    ul {
-      margin: 0.3rem 0 0 1.1rem;
-      padding: 0;
-      font-size: 0.85rem;
-    }
-
-    /* Skills */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 0.8rem;
-    }
-
-    .skill-chip-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-top: 0.3rem;
-    }
-
-    .chip {
-      font-size: 0.78rem;
-      padding: 0.16rem 0.55rem;
-      border-radius: 999px;
-      border: 1px solid rgba(75,85,99,0.9);
-      color: #e5e7eb;
-      background: rgba(15,23,42,0.9);
-    }
-
-    .chip-strong {
-      border-color: var(--accent);
-      background: rgba(56,189,248,0.08);
-    }
-
-    /* Contact */
-    .contact-card {
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-      gap: 1rem;
-      align-items: center;
-    }
-
-    .contact-highlight {
-      border-radius: var(--radius-xl);
-      border: 1px solid rgba(55,65,81,0.85);
-      background: radial-gradient(circle at top left, rgba(56,189,248,0.18), transparent 55%),
-                  rgba(15,23,42,0.98);
-      padding: 0.9rem 1rem;
-      box-shadow: var(--shadow-soft);
-      font-size: 0.9rem;
-    }
-
-    .contact-list {
-      font-size: 0.86rem;
-      color: var(--muted);
-    }
-
-    .contact-list div {
-      margin-bottom: 0.3rem;
-    }
-
-    footer {
-      border-top: 1px solid rgba(31,41,55,0.8);
-      padding: 1.2rem 0 1.4rem;
-      margin-top: 2.5rem;
-      font-size: 0.8rem;
-      color: var(--muted);
-      text-align: center;
-    }
-
-    /* Responsive */
-    @media (max-width: 840px) {
-      .hero {
-        grid-template-columns: 1fr;
-      }
-      .hero-right {
-        margin: 0 auto;
-        order: -1;
-      }
-      .contact-card {
-        grid-template-columns: 1fr;
-      }
-      .nav {
-        gap: 0.8rem;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-  </style>
+  @media (max-width:840px){
+    .hero{ grid-template-columns:1fr; }
+    .contact-card{ grid-template-columns:1fr; }
+    .nav{ flex-direction:column; align-items:flex-start; gap:0.6rem; }
+  }
+</style>
 </head>
 <body>
+
 <header>
   <div class="container">
     <nav class="nav">
-      <div class="brand">JOY GHATAK • PORTFOLIO</div>
+      <div class="brand"><span class="dot"></span>joy_ghatak — portfolio</div>
       <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#education">Education</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#certifications">Certifications</a>
-        <a href="#achievements">Achievements</a>
-        <a href="#contact">Contact</a>
+        <a href="#about">about</a>
+        <a href="#education">education</a>
+        <a href="#skills">skills</a>
+        <a href="#projects">projects</a>
+        <a href="#certifications">certifications</a>
+        <a href="#achievements">achievements</a>
+        <a href="#contact">contact</a>
       </div>
     </nav>
   </div>
 </header>
 
 <main class="container">
+
   <!-- HERO -->
   <section class="hero" id="top">
     <div>
-      <div class="hero-badge">
-        <span class="hero-badge-dot"></span>
-        Open to Internships • B.Tech CSE (2024–2028)
-      </div>
-      <h1>
-        Hi, I’m <span>Joy Ghatak</span> 👋
-      </h1>
-      <p class="hero-subtitle">
-        Aspiring Software Developer • B.Tech in Computer Science & Engineering @ IEM, KOLKATA( SCHOOL OF UNIVERSITY OF ENGINEERING AND MANAGEMENT, KOLKATA)
-      </p>
+      <div class="status-tag"><span class="dot"></span> open to internships · B.Tech CSE, 2024–2028</div>
+      <h1>Joy Ghatak <em>builds</em> things.</h1>
+      <p class="hero-subtitle">// software developer, in training — AI/ML systems &amp; applied engineering</p>
       <p class="hero-summary">
-        I’m passionate about building real-world software solutions, exploring data structures and algorithms,
-        and continuously improving my technical skills. I enjoy solving complex problems and working on projects
-        that combine clean code, security, and user-focused design.
+        I'm a CS undergrad who likes taking an idea from a whiteboard sketch to something
+        that actually runs — phishing detectors, diagnostic models, booking systems. I care about
+        clean structure, security, and building tools people can actually use.
       </p>
-
       <div class="hero-actions">
-        <!-- TODO: Replace # with your actual links -->
-        <a class="btn btn-primary" href="#contact">
-          Contact Me
-        </a>
-        <a class="btn btn-outline" href="https://github.com/joyghatak" target="_blank">github.com/joyghatak
-          View GitHub
-        </a>
-        <a class="btn btn-outline" href="https://www.linkedin.com/in/joy-ghatak-85b96a32a/" target="_blank">linkedin.com/in/joy-ghatak-85b96a32a
-          View LinkedIn
-        </a>
+        <a class="btn btn-primary" href="#contact">Contact me</a>
+        <a class="btn btn-outline" href="https://github.com/joyghatak" target="_blank" rel="noopener">↗ github.com/joyghatak</a>
+        <a class="btn btn-outline" href="https://www.linkedin.com/in/joy-ghatak-85b96a32a/" target="_blank" rel="noopener">↗ linkedin</a>
       </div>
     </div>
 
-    <aside class="hero-right">
-      <div class="hero-role">Current Status</div>
-      <div class="hero-name">B.Tech CSE Student</div>
-      <div class="hero-tagline">
-        INSTITUTE OF ENGINEERING AND MANAGEMENT, KOLKATA
-      </div>
-
-      <div class="hero-meta">
-        CGPA: <strong>8.69</strong> (1st Year)<br />
-        CGPA: <strong>8.53</strong> (2nd Year)<br />
-        Interested in: Software Development, Problem Solving, Cyber Security, Entrepreneurship
-        <div class="badge-row">
-          <span class="pill">Python</span>
-          <span class="pill">C</span>
-          <span class="pill">Java</span>
-          <span class="pill">Data Structures & Algorithms</span>
-        </div>
+    <aside class="title-block">
+      <span class="tick-bl"></span><span class="tick-br"></span>
+      <div class="tb-heading">title block — student record</div>
+      <div class="tb-row"><span class="tb-key">institute</span><span class="tb-val">IEM Newtown</span></div>
+      <div class="tb-row"><span class="tb-key">university</span><span class="tb-val">UEM Kolkata</span></div>
+      <div class="tb-row"><span class="tb-key">program</span><span class="tb-val">B.Tech, CSE</span></div>
+      <div class="tb-row"><span class="tb-key">cgpa — yr 1</span><span class="tb-val">8.69</span></div>
+      <div class="tb-row"><span class="tb-key">cgpa — yr 2</span><span class="tb-val">8.53</span></div>
+      <div class="tb-row"><span class="tb-key">focus</span><span class="tb-val">AI/ML, security, DSA</span></div>
+      <div class="tb-row" style="border-bottom:none;">
+        <span class="tb-key">stack</span>
+        <span class="tb-stack">
+          <span class="pill">Python</span><span class="pill">C</span><span class="pill">Java</span>
+        </span>
       </div>
     </aside>
   </section>
 
   <!-- ABOUT -->
-  <section id="about">
-    <span class="section-pill">Profile</span>
-    <h2 class="section-title">
-      <span class="accent"></span> About Me
-    </h2>
-    <p class="muted" style="font-size: 0.94rem; max-width: 48rem;">
-      I’m an aspiring Computer Science Engineer eager to apply my knowledge in practical environments.
-      I enjoy turning ideas into working applications, learning new technologies, and collaborating on
-      projects that require clear thinking and robust coding practices. I am committed to continuous learning
-      and staying updated with the latest advancements in the field of software development.
+  <section id="about" class="reveal">
+    <span class="dir-label">about</span>
+    <h2 class="section-title"><span class="prompt">&gt;</span> Profile</h2>
+    <p class="about-text">
+      <span class="lead">I'm an engineer who learns by shipping.</span><br /><br />
+      I'm an aspiring computer science engineer eager to apply what I learn in practical environments.
+      I enjoy turning ideas into working applications, picking up new tools as projects demand them, and
+      collaborating on work that requires clear thinking and robust code. I'm committed to continuous
+      learning and staying current with software development and applied AI.
     </p>
   </section>
 
   <!-- EDUCATION -->
-  <section id="education">
-    <span class="section-pill">Academic Background</span>
-    <h2 class="section-title">
-      <span class="accent"></span> Education
-    </h2>
-
+  <section id="education" class="reveal">
+    <span class="dir-label">education</span>
+    <h2 class="section-title"><span class="prompt">&gt;</span> Education</h2>
     <div class="card-grid">
       <article class="card">
         <div class="card-header">
           <div>
-            <div class="card-title">B.Tech in Computer Science & Engineering</div>
-            <div class="card-subtitle"> INSTITUTE OF ENGINEERING AND MANAGEMENT, KOLKATA(IEM, KOLKATA)</div>
+            <div class="card-title">B.Tech, Computer Science &amp; Engineering</div>
+            <div class="card-subtitle">Institute of Engineering and Management, Newtown — University of Engineering &amp; Management, Kolkata</div>
           </div>
           <span class="card-badge">2024 – 2028</span>
         </div>
         <div class="muted">
-          CGPA (1st Year): <strong>8.69</strong><br />
-          CGPA (2nd Year): <strong>8.53</strong><br />
-          Focused on AI fundamentals, core computer science fundamentals, software engineering, and problem solving.
+          CGPA (Year 1): <strong style="color:var(--paper)">8.69</strong><br />
+          CGPA (Year 2): <strong style="color:var(--paper)">8.53</strong><br />
+          Focused on AI fundamentals, core CS theory, software engineering, and problem solving.
         </div>
       </article>
 
@@ -534,10 +337,7 @@
           </div>
           <span class="card-badge">2023 – 2024</span>
         </div>
-        <div class="muted">
-          Percentage: <strong>80%</strong><br />
-          Stream: Science
-        </div>
+        <div class="muted">Percentage: <strong style="color:var(--paper)">80%</strong> · Stream: Science</div>
       </article>
 
       <article class="card">
@@ -546,54 +346,46 @@
             <div class="card-title">Secondary (Class 10)</div>
             <div class="card-subtitle">Basirhat High School</div>
           </div>
-          <span class="card-badge">Completed</span>
+          <span class="card-badge">completed</span>
         </div>
-        <div class="muted">
-          Percentage: <strong>82.57%</strong>
-        </div>
+        <div class="muted">Percentage: <strong style="color:var(--paper)">82.57%</strong></div>
       </article>
     </div>
   </section>
 
   <!-- SKILLS -->
-  <section id="skills">
-    <span class="section-pill">Technical Skills</span>
-    <h2 class="section-title">
-      <span class="accent"></span> Skills
-    </h2>
-
+  <section id="skills" class="reveal">
+    <span class="dir-label">skills</span>
+    <h2 class="section-title"><span class="prompt">&gt;</span> Skills</h2>
     <div class="skills-grid">
       <div class="card">
-        <div class="card-title">Programming Languages</div>
+        <div class="card-title">Programming languages</div>
         <div class="skill-chip-row">
           <span class="chip chip-strong">Python</span>
           <span class="chip chip-strong">C</span>
           <span class="chip chip-strong">Java</span>
         </div>
       </div>
-
       <div class="card">
-        <div class="card-title">Computer Science Fundamentals</div>
+        <div class="card-title">CS fundamentals</div>
         <div class="skill-chip-row">
           <span class="chip chip-strong">Data Structures</span>
           <span class="chip chip-strong">Algorithms</span>
-          <spam class="chip chip-strong">Object-Oriented Programming (Java)</spam>
+          <span class="chip chip-strong">OOP (Java)</span>
           <span class="chip">Problem Solving</span>
         </div>
       </div>
-      
-       <div class="card">
-        <div class="card-title">AI/Machine Learning</div>
+      <div class="card">
+        <div class="card-title">AI / machine learning</div>
         <div class="skill-chip-row">
-          <span class="chip">Machine Learning Fundamentals</span>
-          <span class="chip">Neural Network & deep Learning Fundamentals</span>
+          <span class="chip">ML fundamentals</span>
+          <span class="chip">Neural networks &amp; deep learning fundamentals</span>
         </div>
       </div>
-      
       <div class="card">
-        <div class="card-title">Additional Interests</div>
+        <div class="card-title">Additional interests</div>
         <div class="skill-chip-row">
-          <span class="chip">Cyber Security Fundamentals</span>
+          <span class="chip">Cybersecurity fundamentals</span>
           <span class="chip">Entrepreneurship</span>
         </div>
       </div>
@@ -601,261 +393,184 @@
   </section>
 
   <!-- PROJECTS -->
-  <section id="projects">
-    <span class="section-pill">Hands-on Experience</span>
-    <h2 class="section-title">
-      <span class="accent"></span> Projects
-    </h2>
+  <section id="projects" class="reveal">
+    <span class="dir-label">projects</span>
+    <h2 class="section-title"><span class="prompt">&gt;</span> Projects</h2>
 
-    
-      <article class="card">
-  <div class="card-header">
-    <div>
-      <div class="card-title">AI Phishing Detector</div>
-      <div class="card-subtitle">Jan 2026 – March 2026 | Under Development</div>
-    </div>
-  </div>
-  <div class="muted">
-    <ul>
-      <li>Developing a hybrid phishing detection system using blacklist filtering, whitelist filtering, and machine learning models.</li>
-      <li>Designing a multi-layer detection mechanism to identify malicious URLs and improve cybersecurity protection.</li>
-      <li>Implementing backend logic with secure data processing for detecting suspicious web links.</li>
-    </ul>
-
-    <div style="margin-top: 0.4rem; font-size: 0.8rem;">
-            Project Link: <a href="https://joyghatak-phishing-detector.streamlit.app/" target="_blank">https://joyghatak-phishing-detector.streamlit.app/</a>
-          </div>
-  </div>
-</article>
-<article class="card">
-  <div class="card-header">
-    <div>
-      <div class="card-title">HealthBandhu – AI Healthcare Assistant</div>
-      <div class="card-subtitle">Apr 2026 – Jun 2026 | Research Project</div>
-    </div>
-  </div>
-
-  <div class="muted">
-    <p>
-      Developed an Explainable Hybrid AI framework for multiclass disease diagnosis,
-      emergency risk assessment, and clinical decision support. The system combines
-      Deep Neural Networks, Extra Trees, and a rule-based emergency engine to predict
-      754 diseases from 377 clinical symptoms, trained on 246,945 patient records.
-    </p>
-
-    <div style="margin-top:0.6rem; font-size:0.8rem;">
-      <strong>Tech Stack:</strong> Python, TensorFlow, Scikit-learn, Streamlit, NumPy, Pandas
-    </div>
-
-    <div style="margin-top:0.4rem; font-size:0.8rem;">
-      <strong>Model:</strong> Hybrid AI (DNN + Extra Trees + Rule-Based Emergency Engine)
-    </div>
-
-    <div style="margin-top:0.4rem; font-size:0.8rem;">
-      <strong>Performance:</strong> Top-1 Accuracy: 85.70% | Top-10 Accuracy: 99.35%
-    </div>
-
-    <div style="margin-top:0.4rem; font-size:0.8rem;">
-      <strong>Live Demo:</strong>
-      <a href="https://huggingface.co/spaces/JoyGhatak/healthbandhu-ai" target="_blank">
-        Hugging Face Space
-      </a>
-    </div>
-  </div>
-</article>
-<div class="card-grid">
+    <div class="card-grid" style="margin-bottom:1rem;">
       <article class="card">
         <div class="card-header">
           <div>
-            <div class="card-title">Online Movie Ticket Booking System</div>
-            <div class="card-subtitle">Oct 2025 – Dec 2025</div>
+            <div class="card-title">AI Phishing Detector</div>
+            <div class="card-subtitle">Jan 2026 – Mar 2026</div>
           </div>
+          <span class="status shipped"><span class="dot"></span>live</span>
         </div>
         <div class="muted">
           <ul>
-            <li>Designed a secure login and registration system to manage user authentication.</li>
-            <li>Implemented dynamic seat selection with real-time booking updates.</li>
-            <li>Integrated automatic PDF ticket generation for user convenience.</li>
+            <li>Hybrid phishing detection system combining blacklist filtering, trusted-domain verification, and a Random Forest classifier over 13 URL features.</li>
+            <li>Multi-layer detection pipeline for identifying malicious URLs and improving browsing safety.</li>
+            <li>Backend logic handles secure processing of suspicious web links.</li>
           </ul>
-          <!-- TODO: Add actual project link -->
-          <div style="margin-top: 0.4rem; font-size: 0.8rem;">
-            Project Link: <a href="https://joyghatak.github.io/-MovieLoop--Movie-Ticket-Booking/" target="_blank">https://joyghatak.github.io/-MovieLoop--Movie-Ticket-Booking/</a>
-          </div>
+          <div class="proj-link">↗ <a href="https://joyghatak-phishing-detector.streamlit.app/" target="_blank" rel="noopener">joyghatak-phishing-detector.streamlit.app</a></div>
         </div>
       </article>
+
+      <article class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">HealthBandhu — AI Healthcare Assistant</div>
+            <div class="card-subtitle">Apr 2026 – Jun 2026</div>
+          </div>
+          <span class="status shipped"><span class="dot"></span>live</span>
+        </div>
+        <div class="muted">
+          <p style="margin:0.3rem 0 0.6rem;">
+            Explainable hybrid AI framework for multiclass disease diagnosis, emergency risk assessment,
+            and clinical decision support — combining a deep neural network, an Extra Trees classifier,
+            and a rule-based emergency engine to predict across 754 diseases from 377 clinical symptoms,
+            trained on 246,945 patient records.
+          </p>
+          <ul>
+            <li><strong style="color:var(--paper)">Stack:</strong> Python, TensorFlow, Scikit-learn, Streamlit, NumPy, Pandas</li>
+            <li><strong style="color:var(--paper)">Model:</strong> Hybrid AI (DNN + Extra Trees + rule-based emergency engine)</li>
+            <li><strong style="color:var(--paper)">Performance:</strong> 85.70% top-1 accuracy · 99.35% top-10 accuracy</li>
+          </ul>
+          <div class="proj-link">↗ <a href="https://huggingface.co/spaces/JoyGhatak/healthbandhu-ai" target="_blank" rel="noopener">Hugging Face Space</a></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="card-grid">
+      <article class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">MovieLoop — Ticket Booking</div>
+            <div class="card-subtitle">Oct 2025 – Dec 2025</div>
+          </div>
+          <span class="status shipped"><span class="dot"></span>live</span>
+        </div>
+        <div class="muted">
+          <ul>
+            <li>Secure login and registration to manage user authentication.</li>
+            <li>Dynamic seat selection with real-time booking updates.</li>
+            <li>Automatic PDF ticket generation.</li>
+          </ul>
+          <div class="proj-link">↗ <a href="https://joyghatak.github.io/-MovieLoop--Movie-Ticket-Booking/" target="_blank" rel="noopener">view project</a></div>
+        </div>
+      </article>
+
       <article class="card">
         <div class="card-header">
           <div>
             <div class="card-title">Inventory Control System</div>
             <div class="card-subtitle">Oct 2025 – Nov 2025</div>
           </div>
+          <span class="status shipped"><span class="dot"></span>live</span>
         </div>
         <div class="muted">
           <ul>
-            <li>Built a dashboard to manage products, suppliers, and customers efficiently.</li>
-            <li>Implemented sales and purchase tracking with basic analytics and visualizations.</li>
-            <li>Aimed at improving visibility and control over inventory operations.</li>
+            <li>Dashboard to manage products, suppliers, and customers.</li>
+            <li>Sales and purchase tracking with basic analytics and visualizations.</li>
+            <li>Built for visibility and control over inventory operations.</li>
           </ul>
-          <!-- TODO: Add actual project link -->
-          <div style="margin-top: 0.4rem; font-size: 0.8rem;">
-            Project Link: <a href="https://joyghatak.github.io/Inventory-Frontend/" target="_blank">https://joyghatak.github.io/Inventory-Frontend/</a>
-          </div>
+          <div class="proj-link">↗ <a href="https://joyghatak.github.io/Inventory-Frontend/" target="_blank" rel="noopener">view project</a></div>
         </div>
       </article>
+
       <article class="card">
         <div class="card-header">
           <div>
-            <div class="card-title">Automated Exam Evaluator</div>
-            <div class="card-subtitle">Dec 2025 – Dec 2025</div>
+            <div class="card-title">Fast Results — Exam Evaluator</div>
+            <div class="card-subtitle">Dec 2025</div>
           </div>
+          <span class="status shipped"><span class="dot"></span>live</span>
         </div>
         <div class="muted">
           <ul>
-            <li>Fast Results is a web-based automated exam evaluation system that simplifies result processing for educators. Students submit their descriptive answers, which the backend evaluates using Node.js and MongoDB.</li>
-            <li>It stores scores, displays performance instantly, and generates class rankings.</li>
-            <li>The system provides a simple, colorful interface and secure database integration.</li>
+            <li>Web-based automated exam evaluation system built to simplify result processing for educators.</li>
+            <li>Node.js and MongoDB backend evaluates submitted descriptive answers.</li>
+            <li>Stores scores, shows performance instantly, and generates class rankings.</li>
           </ul>
-          <!-- TODO: Add actual project link -->
-          <div style="margin-top: 0.4rem; font-size: 0.8rem;">
-            Project Link: <a href="https://joyghatak.github.io/Fast-Results/" target="_blank">https://joyghatak.github.io/Fast-Results/</a>
-          </div>
+          <div class="proj-link">↗ <a href="https://joyghatak.github.io/Fast-Results/" target="_blank" rel="noopener">view project</a></div>
         </div>
       </article>
-    </div>
     </div>
   </section>
 
   <!-- CERTIFICATIONS -->
-  <section id="certifications">
-    <span class="section-pill">Learning & Certifications</span>
-    <h2 class="section-title">
-      <span class="accent"></span> Certifications
-    </h2>
-   <div class="card-grid">
-      <article class="card">
-        <div class="card-title">Fundamentals of Object Oriented Programming</div>
-        <div class="muted">
-          <!-- TODO: Replace # with certificate URL -->
-          Certificate: <a href="https://nptel.ac.in/noc/E_Certificate/NOC26CS87S115870044104576522" target="_blank">View Certificate</a>
-        </div>
-      </article>
-  <div class="card-grid">
-      <article class="card">
-        <div class="card-title">The Joy of Computing using Python</div>
-        <div class="muted">
-          <!-- TODO: Replace # with certificate URL -->
-          Certificate: <a href="https://archive.nptel.ac.in/content/noc/NOC25/SEM1/Ecertificates/106/noc25-cs69/Course/NPTEL25CS69S94950088404454423.pdf" target="_blank">View Certificate</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card-title">Data Structures and Algorithms Design</div>
-        <div class="muted">
-          Certificate: <a href="https://archive.nptel.ac.in/content/noc/NOC25/SEM2/Ecertificates/106/noc25-cs81/Course/NPTEL25CS81S46080287610555931.pdf" target="_blank">View Certificate</a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="card-title">Machine Learning for All</div>
-        <div class="muted">
-          Certificate: <a href="https://www.coursera.org/account/accomplishments/verify/3RCWIOHBMJZX" target="_blank">View Certificate</a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="card-title">Introduction to Generative AI</div>
-        <div class="muted">
-          Certificate: <a href="https://coursera.org/share/0d368174b7cc8476dd0300ad6570b788" target="_blank">View Certificate</a>
-        </div>
-      </article>
-      <article class="card">
-        <div class="card-title">Introduction to Java</div>
-        <div class="muted">
-          Certificate: <a href="https://www.coursera.org/account/accomplishments/certificate/TCR44W2BP10W" target="_blank">View Certificate</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card-title">Prompt Engineering for ChatGPT</div>
-        <div class="muted">
-          Certificate: <a href="https://www.coursera.org/account/accomplishments/certificate/8DW8EF8C504S" target="_blank">View Certificate</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card-title">Cyber Security Fundamentals</div>
-        <div class="muted">
-          Certificate: <a href="https://www.coursera.org/account/accomplishments/certificate/CBTRKMM896TX" target="_blank">View Certificate</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="card-title">Ignite India – Entrepreneurship Training</div>
-        <div class="muted">
-          Ignite Bootcamp – Idea to Plan<br />
-          Certificate: <a href="https://web.certificate.wfglobal.org/en/certificate?certificateId=68ff0625340b394e18ef5acd" target="_blank">View Certificate</a>
-        </div>
-      </article>
+  <section id="certifications" class="reveal">
+    <span class="dir-label">certifications</span>
+    <h2 class="section-title"><span class="prompt">&gt;</span> Certifications</h2>
+    <div class="cert-list">
+      <div class="cert"><span class="cert-name">Fundamentals of Object Oriented Programming</span><a href="https://nptel.ac.in/noc/E_Certificate/NOC26CS87S115870044104576522" target="_blank" rel="noopener">↗ view</a></div>
+      <div class="cert"><span class="cert-name">The Joy of Computing using Python</span><a href="https://archive.nptel.ac.in/content/noc/NOC25/SEM1/Ecertificates/106/noc25-cs69/Course/NPTEL25CS69S94950088404454423.pdf" target="_blank" rel="noopener">↗ view</a></div>
+      <div class="cert"><span class="cert-name">Data Structures and Algorithms Design</span><a href="https://archive.nptel.ac.in/content/noc/NOC25/SEM2/Ecertificates/106/noc25-cs81/Course/NPTEL25CS81S46080287610555931.pdf" target="_blank" rel="noopener">↗ view</a></div>
+      <div class="cert"><span class="cert-name">Machine Learning for All</span><a href="https://www.coursera.org/account/accomplishments/verify/3RCWIOHBMJZX" target="_blank" rel="noopener">↗ view</a></div>
+      <div class="cert"><span class="cert-name">Introduction to Generative AI</span><a href="https://coursera.org/share/0d368174b7cc8476dd0300ad6570b788" target="_blank" rel="noopener">↗ view</a></div>
+      <div class="cert"><span class="cert-name">Introduction to Java</span><a href="https://www.coursera.org/account/accomplishments/certificate/TCR44W2BP10W" target="_blank" rel="noopener">↗ view</a></div>
+      <div class="cert"><span class="cert-name">Prompt Engineering for ChatGPT</span><a href="https://www.coursera.org/account/accomplishments/certificate/8DW8EF8C504S" target="_blank" rel="noopener">↗ view</a></div>
+      <div class="cert"><span class="cert-name">Cyber Security Fundamentals</span><a href="https://www.coursera.org/account/accomplishments/certificate/CBTRKMM896TX" target="_blank" rel="noopener">↗ view</a></div>
+      <div class="cert"><span class="cert-name">Ignite India — Entrepreneurship Bootcamp</span><a href="https://web.certificate.wfglobal.org/en/certificate?certificateId=68ff0625340b394e18ef5acd" target="_blank" rel="noopener">↗ view</a></div>
     </div>
   </section>
 
   <!-- ACHIEVEMENTS -->
-  <section id="achievements">
-    <span class="section-pill">Highlights</span>
-    <h2 class="section-title">
-      <span class="accent"></span> Achievements
-    </h2>
-
+  <section id="achievements" class="reveal">
+    <span class="dir-label">achievements</span>
+    <h2 class="section-title"><span class="prompt">&gt;</span> Achievements</h2>
     <div class="card-grid">
       <article class="card">
-        <div class="card-title">Hackathon Participation – HACKERSNIPPET 0X</div>
-        <div class="muted">
-          Participated in a hackathon environment, gaining exposure to rapid problem solving,
-          collaboration, and building solutions under time constraints.
-        </div>
+        <div class="card-title">Hackathon — HACKERSNIPPET 0X</div>
+        <div class="muted">Participated in a hackathon environment, gaining exposure to rapid problem solving, collaboration, and building solutions under time constraints.</div>
+      </article>
+      <article class="card">
+        <div class="card-title">Hackathon — UIC 2026</div>
+        <div class="muted">Participated in a hackathon environment, gaining exposure to rapid problem solving, collaboration, and building solutions under time constraints.</div>
       </article>
     </div>
-    <div class="card-grid">
-  <article class="card">
-    <div class="card-title">Hackathon Participation – UIC 2026</div>
-    <div class="muted">
-      Participated in a hackathon environment, gaining exposure to rapid problem solving,
-      collaboration, and building solutions under time constraints.
-    </div>
-  </article>
-</div>
   </section>
 
   <!-- CONTACT -->
-  <section id="contact">
-    <span class="section-pill">Let’s Connect</span>
-    <h2 class="section-title">
-      <span class="accent"></span> Contact
-    </h2>
-
+  <section id="contact" class="reveal">
+    <span class="dir-label">contact</span>
+    <h2 class="section-title"><span class="prompt">&gt;</span> Contact</h2>
     <div class="contact-card">
       <div class="contact-highlight">
-        <strong>Interested in internships, projects, and collaboration opportunities.</strong><br />
-        If you think I might be a good fit for your team or project, feel free to reach out. I’m always
-        excited to learn, contribute, and grow through real-world experience.
+        <strong>Let's build something.</strong><br /><br />
+        I'm interested in internships, research collaborations, and project work. If you think I could
+        be a good fit for your team, reach out — I'm always glad to learn, contribute, and grow through
+        real-world experience.
+        <span class="prompt-line">$ mailto joyghatak0099@gmail.com --subject "let's talk"</span>
       </div>
-
-      <div class="contact-list">
-         <div><strong>Email:</strong> <a href="mailto:joyghatak0099@gmail.com">joyghatak0099@gmail.com</a></div>
-      <div><strong>Phone:</strong> <a href="tel:+919332993088">+91 93329 93088</a></div>
-      <div><strong>GitHub:</strong> <a href="https://github.com/joyghatak" target="_blank">github.com/joyghatak</a></div>
-      <div><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/joy-ghatak-85b96a32a/" target="_blank">linkedin.com/in/joy-ghatak-85b96a32a</a></div>
-      </div>
+      <aside class="title-block">
+        <span class="tick-bl"></span><span class="tick-br"></span>
+        <div class="tb-heading">contact block</div>
+        <div class="tb-row"><span class="tb-key">email</span><span class="tb-val"><a href="mailto:joyghatak0099@gmail.com">joyghatak0099@gmail.com</a></span></div>
+        <div class="tb-row"><span class="tb-key">phone</span><span class="tb-val"><a href="tel:+919332993088">+91 93329 93088</a></span></div>
+        <div class="tb-row"><span class="tb-key">github</span><span class="tb-val"><a href="https://github.com/joyghatak" target="_blank" rel="noopener">joyghatak</a></span></div>
+        <div class="tb-row" style="border-bottom:none;"><span class="tb-key">linkedin</span><span class="tb-val"><a href="https://www.linkedin.com/in/joy-ghatak-85b96a32a/" target="_blank" rel="noopener">joy-ghatak</a></span></div>
+      </aside>
     </div>
   </section>
+
 </main>
 
 <footer>
-  © <span id="year"></span> Joy Ghatak. All rights reserved.
+  © <span id="year"></span> Joy Ghatak — built with plain HTML &amp; CSS.
 </footer>
 
 <script>
-  // Set current year in footer
   document.getElementById("year").textContent = new Date().getFullYear();
+
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in-view'));
+  }
 </script>
 </body>
 </html>
-
