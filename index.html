@@ -25,12 +25,17 @@
     --f-display:  'Fraunces', serif;
     --f-mono:     'IBM Plex Mono', monospace;
     --f-body:     'Inter', system-ui, sans-serif;
+    /* cybernetic layer */
+    --glitch-1:   #6bd9c6;
+    --glitch-2:   #e35b6b;
+    --scan-glow:  rgba(227,163,62,0.55);
   }
 
   *{ box-sizing:border-box; }
   html{ scroll-behavior:smooth; }
   body{
     margin:0;
+    position:relative;
     background:
       repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 44px),
       repeating-linear-gradient(90deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 44px),
@@ -39,7 +44,30 @@
     font-family:var(--f-body);
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
   }
+
+  /* ambient hex-grid + drifting scan sweep — the "cybernetic world" atmosphere */
+  body::before{
+    content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image:
+      linear-gradient(30deg, rgba(107,217,198,0.05) 1px, transparent 1px),
+      linear-gradient(150deg, rgba(107,217,198,0.05) 1px, transparent 1px),
+      linear-gradient(30deg, rgba(107,217,198,0.05) 1px, transparent 1px),
+      linear-gradient(150deg, rgba(107,217,198,0.05) 1px, transparent 1px);
+    background-size:64px 112px;
+    background-position:0 0, 0 0, 32px 56px, 32px 56px;
+    opacity:0.5;
+  }
+  body::after{
+    content:''; position:fixed; left:0; right:0; height:140px; z-index:1; pointer-events:none;
+    background:linear-gradient(180deg, transparent, rgba(107,217,198,0.06) 45%, rgba(227,163,62,0.09) 50%, rgba(107,217,198,0.06) 55%, transparent);
+    animation:ambient-scan 9s linear infinite;
+    mix-blend-mode:screen;
+  }
+  @keyframes ambient-scan{ 0%{ top:-140px; } 100%{ top:100vh; } }
+  header, main, footer{ position:relative; z-index:2; }
+  @media (prefers-reduced-motion: reduce){ body::after{ animation:none; display:none; } }
   a{ color:var(--teal); text-decoration:none; }
   a:hover{ text-decoration:underline; }
   ::selection{ background:var(--brass); color:#0a1119; }
@@ -224,12 +252,60 @@
     font-family:var(--f-mono); font-size:0.76rem; color:var(--muted-2); text-align:center;
   }
 
-  /* scroll reveal */
-  .reveal{ opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; }
-  .reveal.in-view{ opacity:1; transform:translateY(0); }
+  /* ================= cybernetic section transitions ================= */
+
+  /* each section "boots up" as it's scanned into view: a sweep bar crosses it,
+     then its pieces lock into place one after another like armor plates. */
+  section.reveal{ position:relative; }
+  section.reveal::before{
+    content:''; position:absolute; inset:-4px -1.4rem; z-index:5; pointer-events:none;
+    background:linear-gradient(90deg, transparent, var(--scan-glow) 45%, var(--teal) 50%, var(--scan-glow) 55%, transparent);
+    opacity:0; transform:scaleY(0);
+  }
+  section.reveal.in-view::before{
+    animation:scan-sweep 0.7s cubic-bezier(.4,0,.2,1) forwards;
+  }
+  @keyframes scan-sweep{
+    0%  { opacity:0; transform:translateY(-6%) scaleY(0); }
+    12% { opacity:1; transform:translateY(0%) scaleY(1); }
+    88% { opacity:1; transform:translateY(94%) scaleY(1); }
+    100%{ opacity:0; transform:translateY(100%) scaleY(0.4); }
+  }
+
+  /* piece-by-piece "assembly" — direct children lock in staggered, like plating snapping shut */
+  .reveal > *{
+    opacity:0;
+    transform:translateY(18px) translateX(calc(var(--edge, 1) * 10px)) rotateX(8deg);
+    filter:blur(2px);
+    clip-path:polygon(0 12%, 100% 0, 100% 88%, 0% 100%);
+    transition:
+      opacity .45s cubic-bezier(.2,.7,.3,1),
+      transform .5s cubic-bezier(.2,.7,.3,1),
+      filter .4s ease,
+      clip-path .5s cubic-bezier(.2,.7,.3,1);
+    transition-delay:calc(var(--i, 0) * 70ms);
+  }
+  .reveal.in-view > *{
+    opacity:1; transform:translateY(0) translateX(0) rotateX(0deg);
+    filter:blur(0); clip-path:polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  }
+  .reveal > *:nth-child(even){ --edge:-1; }
+  /* brief glitch flicker right as a piece locks in */
+  .reveal.in-view > *{ animation:piece-glitch .35s ease calc(var(--i, 0) * 70ms); }
+  @keyframes piece-glitch{
+    0%{ text-shadow:none; }
+    30%{ text-shadow:-2px 0 var(--glitch-1), 2px 0 var(--glitch-2); }
+    55%{ text-shadow:2px 0 var(--glitch-1), -1px 0 var(--glitch-2); }
+    100%{ text-shadow:none; }
+  }
+
   @media (prefers-reduced-motion: reduce){
-    .reveal{ opacity:1; transform:none; transition:none; }
+    section.reveal::before{ display:none; }
+    .reveal > *{ opacity:1; transform:none; filter:none; clip-path:none; transition:none; animation:none; }
     html{ scroll-behavior:auto; }
+  }
+  @media (max-width:840px){
+    section.reveal::before{ inset:-4px -1rem; }
   }
 
   @media (max-width:840px){
@@ -237,15 +313,74 @@
     .contact-card{ grid-template-columns:1fr; }
     .nav{ flex-direction:column; align-items:flex-start; gap:0.6rem; }
   }
+
+  /* ---------- boot preloader ---------- */
+  #boot{
+    position:fixed; inset:0; z-index:999; background:var(--ink);
+    display:flex; align-items:center; justify-content:center; flex-direction:column; gap:0.9rem;
+    font-family:var(--f-mono); color:var(--teal);
+    transition:opacity .5s ease, visibility .5s ease;
+  }
+  #boot.hide{ opacity:0; visibility:hidden; pointer-events:none; }
+  #boot .boot-gif{
+    width:120px; height:120px; object-fit:cover; border-radius:50%;
+    border:1px solid var(--line); opacity:0.9; box-shadow:0 0 24px var(--scan-glow);
+  }
+  #boot .boot-gif[data-missing]{ display:none; }
+  #boot .boot-line{ font-size:0.78rem; letter-spacing:0.04em; min-height:1.1em; }
+  #boot .boot-line .ok{ color:var(--good); }
+  #boot .boot-bar{ width:220px; height:3px; background:var(--ink-3); border-radius:2px; overflow:hidden; }
+  #boot .boot-bar > span{ display:block; height:100%; width:0%; background:var(--brass); box-shadow:0 0 8px var(--brass); animation:boot-fill 1.4s cubic-bezier(.3,.6,.3,1) forwards; }
+  @keyframes boot-fill{ to{ width:100%; } }
+  @media (prefers-reduced-motion: reduce){ #boot{ display:none; } }
+
+  /* ---------- profile photo (hex frame) ---------- */
+  .id-photo-wrap{ display:flex; justify-content:center; margin-bottom:0.9rem; }
+  .id-photo{
+    position:relative; width:104px; height:104px;
+    clip-path:polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+    background:var(--ink-3); display:flex; align-items:center; justify-content:center;
+  }
+  .id-photo img{
+    width:100%; height:100%; object-fit:cover;
+    clip-path:polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  }
+  .id-photo img[data-missing]{ display:none; }
+  .id-photo .id-fallback{
+    font-family:var(--f-display); font-weight:600; font-size:1.5rem; color:var(--brass);
+  }
+  .id-photo::after{
+    content:''; position:absolute; inset:0;
+    clip-path:polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+    border:1px solid var(--brass-dim); pointer-events:none;
+  }
+
+  /* ---------- nav lock-on indicator ---------- */
+  .nav-links{ position:relative; }
+  .nav-lock{
+    position:absolute; height:calc(100% - 4px); top:2px; border-radius:4px;
+    border:1px solid var(--brass); box-shadow:0 0 10px var(--scan-glow), inset 0 0 6px var(--scan-glow);
+    pointer-events:none; transition:left .35s cubic-bezier(.3,.7,.3,1), width .35s cubic-bezier(.3,.7,.3,1), opacity .2s ease;
+    opacity:0;
+  }
 </style>
 </head>
 <body>
+
+<!-- BOOT SEQUENCE -->
+<div id="boot" aria-hidden="true">
+  <img class="boot-gif" src="assets/transition.gif" alt="" data-optional-asset
+       onerror="this.setAttribute('data-missing','');" />
+  <div class="boot-line" id="boot-text">initializing&nbsp;system…</div>
+  <div class="boot-bar"><span></span></div>
+</div>
 
 <header>
   <div class="container">
     <nav class="nav">
       <div class="brand"><span class="dot"></span>joy_ghatak — portfolio</div>
-      <div class="nav-links">
+      <div class="nav-links" id="navLinks">
+        <span class="nav-lock" id="navLock"></span>
         <a href="#about">about</a>
         <a href="#education">education</a>
         <a href="#skills">skills</a>
@@ -261,7 +396,7 @@
 <main class="container">
 
   <!-- HERO -->
-  <section class="hero" id="top">
+  <section class="hero reveal" id="top">
     <div>
       <div class="status-tag"><span class="dot"></span> open to internships · B.Tech CSE, 2024–2028</div>
       <h1>Joy Ghatak <em>builds</em> things.</h1>
@@ -280,6 +415,13 @@
 
     <aside class="title-block">
       <span class="tick-bl"></span><span class="tick-br"></span>
+      <div class="id-photo-wrap">
+        <div class="id-photo">
+          <span class="id-fallback">JG</span>
+          <img src="assets/profile.jpg" alt="Joy Ghatak" data-optional-asset
+               onerror="this.setAttribute('data-missing','');" />
+        </div>
+      </div>
       <div class="tb-heading">title block — student record</div>
       <div class="tb-row"><span class="tb-key">institute</span><span class="tb-val">IEM Newtown</span></div>
       <div class="tb-row"><span class="tb-key">university</span><span class="tb-val">UEM Kolkata</span></div>
@@ -562,8 +704,33 @@
 
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  // stagger index for the piece-by-piece assembly effect
+  document.querySelectorAll('.reveal').forEach(section => {
+    [...section.children].forEach((child, i) => child.style.setProperty('--i', i));
+  });
+
+  // ---- boot sequence ----
+  const boot = document.getElementById('boot');
+  const bootText = document.getElementById('boot-text');
+  if (reduced) {
+    boot.remove();
+  } else {
+    const lines = ['initializing system…', 'loading profile: joy_ghatak', 'linking modules…', 'system online'];
+    let li = 0;
+    const tick = setInterval(() => { li++; if (lines[li]) bootText.textContent = lines[li]; }, 320);
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        clearInterval(tick);
+        boot.classList.add('hide');
+        setTimeout(() => boot.remove(), 600);
+      }, 1300);
+    });
+  }
+
+  // ---- scroll-triggered section assembly ----
+  if (!reduced) {
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); } });
     }, { threshold: 0.12 });
@@ -571,6 +738,37 @@
   } else {
     document.querySelectorAll('.reveal').forEach(el => el.classList.add('in-view'));
   }
+
+  // ---- nav lock-on indicator (scroll-spy) ----
+  const navLinks = [...document.querySelectorAll('#navLinks a')];
+  const navLock = document.getElementById('navLock');
+  const sections = navLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+
+  function moveLock(link){
+    if (!link) { navLock.style.opacity = '0'; return; }
+    navLock.style.left = link.offsetLeft + 'px';
+    navLock.style.width = link.offsetWidth + 'px';
+    navLock.style.opacity = '1';
+  }
+
+  if (sections.length) {
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const idx = sections.indexOf(e.target);
+          if (idx > -1) moveLock(navLinks[idx]);
+        }
+      });
+    }, { rootMargin: '-45% 0px -45% 0px' });
+    sections.forEach(s => spy.observe(s));
+  }
+  navLinks.forEach(a => {
+    a.addEventListener('mouseenter', () => moveLock(a));
+    a.addEventListener('mouseleave', () => {
+      const active = document.querySelector('#navLinks a.active');
+      moveLock(active);
+    });
+  });
 </script>
 </body>
 </html>
