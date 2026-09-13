@@ -463,12 +463,12 @@
         Hi, I’m <span>Joy Ghatak</span> 👋
       </h1>
       <p class="hero-subtitle">
-        Aspiring Software Developer • AI/ML Enthusiast • B.Tech in Computer Science & Engineering @ UEM Kolkata
+        Aspiring Software Developer • AI/ML & Medical CV Specialist • B.Tech in Computer Science & Engineering @ UEM Kolkata
       </p>
       <p class="hero-summary">
-        I’m passionate about building real-world software and AI/ML solutions, exploring data structures and algorithms,
-        and continuously improving my technical skills. I enjoy solving complex problems and working on projects —
-        from brain tumour segmentation pipelines to diagnostic AI models — that combine clean code, security, and user-focused design.
+        I’m passionate about building production-ready AI/ML solutions, medical computer vision frameworks, and robust software systems.
+        I enjoy solving complex problems — from ophthalmology screening models and brain MRI segmentation pipelines to cybersecurity threat detectors — that
+        combine rigorous deep learning architectures, explainable AI (XAI), and clinical-grade workflows.
       </p>
 
       <div class="hero-actions">
@@ -493,11 +493,12 @@
 
       <div class="hero-meta">
         CGPA: <strong>8.69</strong> (Year 1), <strong>8.39</strong> (Year 2)<br />
-        Interested in: Software Development, AI/ML, Problem Solving, Cyber Security, Entrepreneurship
+        Interested in: Applied AI/ML, Medical Computer Vision, Explainable AI (XAI), Cybersecurity, Software Engineering
         <div class="badge-row">
           <span class="pill">Python</span>
-          <span class="pill">C</span>
-          <span class="pill">Java</span>
+          <span class="pill">PyTorch</span>
+          <span class="pill">TensorFlow</span>
+          <span class="pill">Computer Vision</span>
           <span class="pill">Data Structures & Algorithms</span>
         </div>
       </div>
@@ -511,10 +512,10 @@
       <span class="accent"></span> About Me
     </h2>
     <p class="muted" style="font-size: 0.94rem; max-width: 48rem;">
-      I’m an aspiring Computer Science Engineer eager to apply my knowledge in practical environments.
-      I enjoy turning ideas into working applications, learning new technologies, and collaborating on
-      projects that require clear thinking and robust coding practices. I am committed to continuous learning
-      and staying updated with the latest advancements in software development and applied AI.
+      I’m an aspiring Computer Science Engineer eager to apply cutting-edge machine learning and computer vision techniques
+      to high-impact real-world challenges. I specialize in developing explainable deep learning pipelines for medical imaging 
+      (retinal fundus photography & brain MRI) and large-scale symptom-based clinical decision support systems. 
+      I am committed to continuous learning, building robust full-stack AI applications, and maintaining high engineering standards.
     </p>
   </section>
 
@@ -537,7 +538,7 @@
         <div class="muted">
           CGPA (Year 1): <strong>8.69</strong><br />
           CGPA (Year 2): <strong>8.39</strong><br />
-          Focused on AI fundamentals, core computer science theory, software engineering, and problem solving.
+          Focused on AI fundamentals, deep learning, computer vision, core computer science theory, and algorithms.
         </div>
       </article>
 
@@ -584,6 +585,7 @@
           <span class="chip chip-strong">Python</span>
           <span class="chip chip-strong">C</span>
           <span class="chip chip-strong">Java</span>
+          <span class="chip">JavaScript</span>
         </div>
       </div>
 
@@ -598,13 +600,14 @@
       </div>
 
       <div class="card">
-        <div class="card-title">AI / Machine Learning</div>
+        <div class="card-title">AI / Machine Learning & CV</div>
         <div class="skill-chip-row">
           <span class="chip chip-strong">PyTorch</span>
           <span class="chip chip-strong">TensorFlow</span>
-          <span class="chip">Computer Vision</span>
-          <span class="chip">Deep Learning & CNNs</span>
-          <span class="chip">Attention U-Net</span>
+          <span class="chip chip-strong">Computer Vision</span>
+          <span class="chip">UNet++ / Attention U-Net</span>
+          <span class="chip">EfficientNet & ResNet</span>
+          <span class="chip">Explainable AI (Grad-CAM)</span>
           <span class="chip">Scikit-learn</span>
         </div>
       </div>
@@ -612,10 +615,11 @@
       <div class="card">
         <div class="card-title">Tools & Frameworks</div>
         <div class="skill-chip-row">
-          <span class="chip">Streamlit</span>
-          <span class="chip">OpenCV</span>
+          <span class="chip chip-strong">Streamlit</span>
+          <span class="chip chip-strong">OpenCV</span>
           <span class="chip">Git / GitHub</span>
-          <span class="chip">ReportLab</span>
+          <span class="chip">ReportLab (PDFs)</span>
+          <span class="chip">Plotly / Matplotlib</span>
           <span class="chip">SQLite / MongoDB</span>
         </div>
       </div>
@@ -624,27 +628,58 @@
 
   <!-- PROJECTS -->
   <section id="projects">
-    <span class="section-pill">Hands-on Experience</span>
+    <span class="section-pill">Main AI & Deep Learning Systems</span>
     <h2 class="section-title">
-      <span class="accent"></span> Projects
+      <span class="accent"></span> Featured AI Projects
     </h2>
 
+    <!-- MAIN FLAGSHIP AI PROJECTS -->
     <div class="card-grid-wide">
-      <!-- PROJECT: NeuroScan AI -->
+      
+      <!-- FLAGSHIP AI PROJECT 1: AI DR Screening System -->
+      <article class="card card-featured">
+        <div class="card-header">
+          <div>
+            <div class="card-title">AI Diabetic Retinopathy Screening & Biomarker Quantification System</div>
+            <div class="card-subtitle">Jul 2026 – Sep 2026 • Deep Learning, Medical Imaging & Computer Vision</div>
+          </div>
+          <span class="card-badge">PyTorch • EfficientNet-B0 • UNet++ • Grad-CAM</span>
+        </div>
+        <div class="muted">
+          <p style="margin: 0 0 0.5rem 0; line-height: 1.5; color: #d1d5db;">
+            End-to-end medical-AI clinical decision support system for automated Diabetic Retinopathy (DR) screening, 
+            referable DR triage, and sub-retinal biomarker quantification — integrating <strong>EfficientNet-B0</strong> for 
+            5-stage severity grading, <strong>UNet++ / Depthwise Separable UNet</strong> ensembles for multi-class lesion segmentation 
+            (Microaneurysms, Hemorrhages, Hard Exudates, Soft Exudates), <strong>ResNet-18</strong> for anatomical landmark localization (Optic Disc & Fovea) and image quality assessment, 
+            calibrated via <strong>Temperature Scaling</strong> and explained using <strong>Grad-CAM</strong> visual saliency maps.
+          </p>
+          <ul style="margin: 0.4rem 0; padding-left: 1.2rem; line-height: 1.5;">
+            <li><strong>Stack:</strong> Python, PyTorch, Torchvision, Segmentation Models PyTorch (SMP), Streamlit, OpenCV, Plotly, NumPy, Pandas, SciPy, ReportLab</li>
+            <li><strong>Architecture:</strong> Multi-Stage Medical CV Pipeline (Dual IQA & Contrast-Limited Adaptive Histogram Equalization → Calibrated 5-Class EfficientNet-B0 Grading → 4-Class Lesion Segmentation UNets → Vessel & Landmark Localizer → Grad-CAM XAI → Automated Clinical PDF Reporting)</li>
+            <li><strong>Performance:</strong> 85.7% Sensitivity · 96.5% Specificity for Referable DR (Quadratic Weighted Kappa &kappa; = 0.862) · 40.5% ECE reduction (calibrated ECE: 0.032) · Latency: ~11.5ms GPU / ~35.7ms CPU (86.5 FPS)</li>
+            <li><strong>Key Highlights:</strong> Explainable AI (Grad-CAM heatmaps), pixel-level microaneurysm & exudate segmentation, vessel density quantification, Optic Disc & Fovea spatial tracking, confidence calibration, and automated clinical diagnostic report generation.</li>
+          </ul>
+          <div style="margin-top: 0.7rem; font-size: 0.85rem; display: flex; gap: 0.8rem; flex-wrap: wrap;">
+            <span>🌐 <strong>Live App:</strong> <a href="https://dr-screening-system-joy.streamlit.app/" target="_blank" rel="noopener noreferrer">dr-screening-system-joy.streamlit.app</a></span>
+          </div>
+        </div>
+      </article>
+
+      <!-- FLAGSHIP AI PROJECT 2: NeuroScan AI -->
       <article class="card card-featured">
         <div class="card-header">
           <div>
             <div class="card-title">NeuroScan AI — Explainable Brain MRI Tumour Segmentation & Uncertainty Quantification</div>
             <div class="card-subtitle">Aug 2026 – Sep 2026 • Deep Learning, Neuro-Imaging & Explainable AI</div>
           </div>
-          <span class="card-badge">PyTorch • Attention U-Net • EfficientNet-B0</span>
+          <span class="card-badge">PyTorch • Attention U-Net • EfficientNet-B0 • MC Dropout</span>
         </div>
         <div class="muted">
           <p style="margin: 0 0 0.5rem 0; line-height: 1.5; color: #d1d5db;">
             Comprehensive deep learning and explainable AI framework for automated Brain MRI analysis — combining 
             <strong>Otsu skull-stripping</strong>, an <strong>Attention U-Net</strong> for sub-region tumour segmentation & ROI extraction, 
             an <strong>EfficientNet-B0</strong> classifier for 4-class pathology grading (Glioma, Meningioma, Pituitary tumour, and No Tumour), 
-            <strong>MC Dropout</strong> (30 stochastic passes) and <strong>Test-Time Augmentation (TTA)</strong> for epistemic uncertainty quantification, 
+            <strong>Monte Carlo (MC) Dropout</strong> (30 stochastic forward passes) and <strong>Test-Time Augmentation (TTA)</strong> for epistemic uncertainty quantification, 
             and <strong>Grad-CAM</strong> visual saliency maps.
           </p>
           <ul style="margin: 0.4rem 0; padding-left: 1.2rem; line-height: 1.5;">
@@ -659,43 +694,14 @@
         </div>
       </article>
 
-      <!-- PROJECT 1: AI DR Screening System -->
-      <article class="card card-featured">
-        <div class="card-header">
-          <div>
-            <div class="card-title">AI Diabetic Retinopathy Screening & Biomarker Quantification System</div>
-            <div class="card-subtitle">Jul 2026 – Sep 2026 • Deep Learning & Computer Vision</div>
-          </div>
-          <span class="card-badge">PyTorch • EfficientNet-B0 • UNet++</span>
-        </div>
-        <div class="muted">
-          <p style="margin: 0 0 0.5rem 0; line-height: 1.5; color: #d1d5db;">
-            End-to-end medical-AI clinical decision support system for automated Diabetic Retinopathy (DR) screening, 
-            referable DR triage, and sub-retinal biomarker quantification — integrating <strong>EfficientNet-B0</strong> for 
-            5-stage severity grading, <strong>UNet++ / Depthwise Separable UNet</strong> ensembles for multi-class lesion segmentation 
-            (MA, HE, EX, SE), <strong>ResNet-18</strong> for anatomical landmark localization (Optic Disc & Fovea) and image quality assessment, 
-            calibrated via <strong>Temperature Scaling</strong> and explained using <strong>Grad-CAM</strong> visual saliency maps.
-          </p>
-          <ul style="margin: 0.4rem 0; padding-left: 1.2rem; line-height: 1.5;">
-            <li><strong>Stack:</strong> Python, PyTorch, Torchvision, Segmentation Models PyTorch (SMP), Streamlit, OpenCV, Plotly, NumPy, Pandas, SciPy</li>
-            <li><strong>Architecture:</strong> Multi-Stage CV & Deep Learning Pipeline (Dual IQA & CLAHE Enhancement → Calibrated 5-Class EfficientNet-B0 Grading → 4-Class Lesion Segmentation UNets → Vessel & Landmark Localizer → Grad-CAM XAI → Automated Clinical Reporting)</li>
-            <li><strong>Performance:</strong> 85.7% Sensitivity · 96.5% Specificity for Referable DR (Quadratic Weighted Kappa &kappa; = 0.862) · 40.5% ECE reduction (calibrated ECE: 0.032) · Ultra-fast ~11.5ms GPU / ~35.7ms CPU latency (86.5 FPS)</li>
-            <li><strong>Key Highlights:</strong> Explainable AI (Grad-CAM heatmaps), pixel-level microaneurysm & exudate segmentation, vessel density quantification, Optic Disc & Fovea spatial tracking, confidence calibration, and exportable clinical diagnostic reports.</li>
-          </ul>
-          <div style="margin-top: 0.7rem; font-size: 0.85rem; display: flex; gap: 0.8rem; flex-wrap: wrap;">
-            <span>🌐 <strong>Live App:</strong> <a href="https://dr-screening-system-joy.streamlit.app/" target="_blank" rel="noopener noreferrer">dr-screening-system-joy.streamlit.app</a></span>
-          </div>
-        </div>
-      </article>
-
-      <!-- PROJECT 2: HealthBandhu -->
+      <!-- FLAGSHIP AI PROJECT 3: HealthBandhu -->
       <article class="card card-featured">
         <div class="card-header">
           <div>
             <div class="card-title">HealthBandhu — Hybrid AI Disease Diagnosis & Emergency Triage</div>
-            <div class="card-subtitle">Apr 2026 – Jun 2026 • Hybrid AI & Clinical XAI</div>
+            <div class="card-subtitle">Apr 2026 – Jun 2026 • Hybrid AI, Clinical XAI & Decision Support</div>
           </div>
-          <span class="card-badge">TensorFlow • Scikit-learn • Streamlit</span>
+          <span class="card-badge">TensorFlow • Scikit-learn • Streamlit • XAI</span>
         </div>
         <div class="muted">
           <p style="margin: 0 0 0.5rem 0; line-height: 1.5; color: #d1d5db;">
@@ -709,7 +715,7 @@
             <li><strong>Stack:</strong> Python, TensorFlow, Scikit-learn, Streamlit, NumPy, Pandas, ReportLab</li>
             <li><strong>Architecture:</strong> Hybrid AI Ensemble (DNN + Bernoulli Naive Bayes + Rule-Based Engine + 4-Tier Emergency Triage)</li>
             <li><strong>Performance:</strong> 87.28% Top-1 · 96.53% Top-3 · 98.32% Top-5 accuracy (99.95% accuracy for high-confidence predictions)</li>
-            <li><strong>Key Highlights:</strong> Occlusion attribution (XAI), emergency red-flag triage, confidence calibration, clinical assistant, and automated PDF medical report export.</li>
+            <li><strong>Key Highlights:</strong> Occlusion attribution (XAI), emergency red-flag triage, confidence calibration, interactive clinical assistant, and automated PDF medical report export.</li>
           </ul>
           <div style="margin-top: 0.7rem; font-size: 0.85rem; display: flex; gap: 0.8rem; flex-wrap: wrap;">
             <span>🌐 <strong>Live App:</strong> <a href="https://health-bandhu-joy.streamlit.app/" target="_blank" rel="noopener noreferrer">health-bandhu-joy.streamlit.app</a></span>
@@ -718,14 +724,43 @@
       </article>
     </div>
 
-    <!-- Additional Projects Grid -->
-    <div class="card-grid" style="margin-top: 1.2rem;">
-      <!-- PROJECT 3: Inventory Management System -->
+    <!-- OTHER SOFTWARE & APPLIED PROJECTS -->
+    <div style="margin-top: 2.2rem;">
+      <span class="section-pill">Software & Applied Systems</span>
+      <h3 style="font-size: 1.1rem; margin: 0.2rem 0 1rem 0; color: #f3f4f6;">Other Engineering Projects</h3>
+    </div>
+
+    <div class="card-grid">
+      <!-- PROJECT 4: Phishing URL & Threat Detection System -->
+      <article class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">AI Phishing & Malicious URL Detector</div>
+            <div class="card-subtitle">2026 • Machine Learning & Cybersecurity</div>
+          </div>
+          <span class="card-badge">Python • Scikit-learn</span>
+        </div>
+        <div class="muted">
+          <p style="margin: 0 0 0.4rem 0;">
+            An intelligent cybersecurity application to detect malicious URLs, fraudulent domains, and phishing attempts in real-time using heuristic feature engineering and ML classification.
+          </p>
+          <ul>
+            <li><strong>Stack:</strong> Python, Scikit-learn, Streamlit, Pandas, NumPy, Regex</li>
+            <li><strong>Heuristic Extraction:</strong> Analyzes 20+ URL lexical indicators (entropy, IP-based URLs, shortening services, suspicious TLDs, and delimiter counts)</li>
+            <li><strong>Security Engine:</strong> High-precision classifier providing instant risk scores and security warnings to safeguard users from malicious redirect attacks</li>
+          </ul>
+          <div style="margin-top: 0.5rem; font-size: 0.82rem;">
+            🔗 <strong>Repository:</strong> <a href="https://github.com/joyghatak" target="_blank">github.com/joyghatak</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT 5: Inventory Management System -->
       <article class="card">
         <div class="card-header">
           <div>
             <div class="card-title">Inventory Management System</div>
-            <div class="card-subtitle">2026</div>
+            <div class="card-subtitle">2026 • Full-Stack App</div>
           </div>
           <span class="card-badge">Streamlit • SQLite</span>
         </div>
@@ -745,7 +780,7 @@
         </div>
       </article>
 
-      <!-- PROJECT 4: MovieLoop -->
+      <!-- PROJECT 6: MovieLoop -->
       <article class="card">
         <div class="card-header">
           <div>
@@ -766,7 +801,7 @@
         </div>
       </article>
 
-      <!-- PROJECT 5: Inventory Control System -->
+      <!-- PROJECT 7: Inventory Control System -->
       <article class="card">
         <div class="card-header">
           <div>
@@ -787,7 +822,7 @@
         </div>
       </article>
 
-      <!-- PROJECT 6: Fast Results -->
+      <!-- PROJECT 8: Fast Results -->
       <article class="card">
         <div class="card-header">
           <div>
