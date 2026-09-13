@@ -10,6 +10,7 @@
       --bg: #050816;
       --bg-alt: #0b1120;
       --card: #020617;
+
       --accent: #38bdf8;
       --accent-soft: rgba(56,189,248,0.15);
       --text: #e5e7eb;
@@ -280,8 +281,14 @@
     /* Cards / Grid */
     .card-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .card-grid-wide {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.3rem;
     }
 
     .card {
@@ -290,9 +297,16 @@
                   var(--card);
       border-radius: var(--radius-xl);
       border: 1px solid var(--border);
-      padding: 0.9rem 1rem;
+      padding: 1.1rem 1.25rem;
       box-shadow: 0 10px 30px rgba(15,23,42,0.9);
       font-size: 0.88rem;
+    }
+
+    .card-featured {
+      border-color: rgba(56,189,248,0.4);
+      background: radial-gradient(circle at top left, rgba(56,189,248,0.16), transparent 60%),
+                  radial-gradient(circle at bottom right, rgba(168,85,247,0.14), transparent 60%),
+                  #020617;
     }
 
     .card-header {
@@ -300,25 +314,28 @@
       justify-content: space-between;
       align-items: flex-start;
       gap: 0.6rem;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.6rem;
     }
 
     .card-title {
-      font-weight: 600;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: #f3f4f6;
     }
 
     .card-subtitle {
       font-size: 0.8rem;
       color: var(--muted);
-      margin-bottom: 0.4rem;
+      margin-top: 0.1rem;
     }
 
     .card-badge {
       font-size: 0.72rem;
-      padding: 0.16rem 0.5rem;
+      padding: 0.16rem 0.55rem;
       border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.7);
-      color: #e5e7eb;
+      border: 1px solid rgba(56,189,248,0.5);
+      background: rgba(56,189,248,0.1);
+      color: #38bdf8;
       white-space: nowrap;
     }
 
@@ -327,7 +344,7 @@
     }
 
     ul {
-      margin: 0.3rem 0 0 1.1rem;
+      margin: 0.4rem 0 0 1.1rem;
       padding: 0;
       font-size: 0.85rem;
     }
@@ -335,7 +352,7 @@
     /* Skills */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 0.8rem;
     }
 
@@ -451,7 +468,7 @@
       <p class="hero-summary">
         I’m passionate about building real-world software and AI/ML solutions, exploring data structures and algorithms,
         and continuously improving my technical skills. I enjoy solving complex problems and working on projects —
-        from phishing detectors to diagnostic AI models — that combine clean code, security, and user-focused design.
+        from brain tumour segmentation pipelines to diagnostic AI models — that combine clean code, security, and user-focused design.
       </p>
 
       <div class="hero-actions">
@@ -531,7 +548,6 @@
             <div class="card-subtitle">Basirhat High School</div>
           </div>
           <span class="card-badge">2023 – 2024</span>
-          
         </div>
         <div class="muted">
           Percentage: <strong>80%</strong><br />
@@ -584,16 +600,23 @@
       <div class="card">
         <div class="card-title">AI / Machine Learning</div>
         <div class="skill-chip-row">
-          <span class="chip">ML Fundamentals</span>
-          <span class="chip">Neural Networks & Deep Learning Fundamentals</span>
+          <span class="chip chip-strong">PyTorch</span>
+          <span class="chip chip-strong">TensorFlow</span>
+          <span class="chip">Computer Vision</span>
+          <span class="chip">Deep Learning & CNNs</span>
+          <span class="chip">Attention U-Net</span>
+          <span class="chip">Scikit-learn</span>
         </div>
       </div>
 
       <div class="card">
-        <div class="card-title">Additional Interests</div>
+        <div class="card-title">Tools & Frameworks</div>
         <div class="skill-chip-row">
-          <span class="chip">Cyber Security Fundamentals</span>
-          <span class="chip">Entrepreneurship</span>
+          <span class="chip">Streamlit</span>
+          <span class="chip">OpenCV</span>
+          <span class="chip">Git / GitHub</span>
+          <span class="chip">ReportLab</span>
+          <span class="chip">SQLite / MongoDB</span>
         </div>
       </div>
     </div>
@@ -606,128 +629,181 @@
       <span class="accent"></span> Projects
     </h2>
 
-    <div class="card-grid">
-      <article class="card">
+    <div class="card-grid-wide">
+      <!-- PROJECT: NeuroScan AI -->
+      <article class="card card-featured">
         <div class="card-header">
           <div>
-            <div class="card-title">AI Phishing Detector</div>
-            <div class="card-subtitle">Jan 2026 – Mar 2026</div>
+            <div class="card-title">NeuroScan AI — Explainable Brain MRI Tumour Segmentation & Uncertainty Quantification</div>
+            <div class="card-subtitle">Aug 2026 – Sep 2026 • Deep Learning, Neuro-Imaging & Explainable AI</div>
           </div>
+          <span class="card-badge">PyTorch • Attention U-Net • EfficientNet-B0</span>
         </div>
         <div class="muted">
-          <ul>
-            <li>Hybrid phishing detection system combining blacklist filtering, trusted-domain verification, and a Random Forest classifier over 13 URL features.</li>
-            <li>Multi-layer detection pipeline for identifying malicious URLs and improving browsing safety.</li>
-            <li>Backend logic handles secure processing of suspicious web links.</li>
+          <p style="margin: 0 0 0.5rem 0; line-height: 1.5; color: #d1d5db;">
+            Comprehensive deep learning and explainable AI framework for automated Brain MRI analysis — combining 
+            <strong>Otsu skull-stripping</strong>, an <strong>Attention U-Net</strong> for sub-region tumour segmentation & ROI extraction, 
+            an <strong>EfficientNet-B0</strong> classifier for 4-class pathology grading (Glioma, Meningioma, Pituitary tumour, and No Tumour), 
+            <strong>MC Dropout</strong> (30 stochastic passes) and <strong>Test-Time Augmentation (TTA)</strong> for epistemic uncertainty quantification, 
+            and <strong>Grad-CAM</strong> visual saliency maps.
+          </p>
+          <ul style="margin: 0.4rem 0; padding-left: 1.2rem; line-height: 1.5;">
+            <li><strong>Stack:</strong> Python, PyTorch, Torchvision, Streamlit, OpenCV, NumPy, Matplotlib, ReportLab, SciPy</li>
+            <li><strong>Architecture:</strong> Multi-Stage Neuro-Imaging Pipeline (Otsu Skull Stripping & Brain Crop → Attention U-Net Tumour Segmentation → Full-Image & ROI Classification → Fitted Uncertainty Ensemble [0.75 × MC Dropout + 0.25 × TTA] → Grad-CAM XAI → Automated Clinical PDF Report)</li>
+            <li><strong>Performance:</strong> 98.79% Test Accuracy · 98.84% Macro F1 · Cohen’s &kappa; = 0.9835 on BRISC2025 cohort (Segmentation: 0.8400 Test Dice · 0.7756 IoU)</li>
+            <li><strong>Key Highlights:</strong> Sub-voxel tumour mask segmentation, epistemic/aleatoric uncertainty banding, Grad-CAM visual interpretability, 4-tier risk classification, fast inference mode, and downloadable clinical research PDF reports.</li>
           </ul>
-          <div style="margin-top: 0.4rem; font-size: 0.8rem;">
-            Project Link: <a href="https://joyghatak-phishing-detector.streamlit.app/" target="_blank">joyghatak-phishing-detector.streamlit.app</a>
+          <div style="margin-top: 0.7rem; font-size: 0.85rem; display: flex; gap: 0.8rem; flex-wrap: wrap;">
+            <span>🌐 <strong>Live App:</strong> <a href="https://neuroscan-ai-joy.streamlit.app/" target="_blank" rel="noopener noreferrer">neuroscan-ai-joy.streamlit.app</a></span>
           </div>
         </div>
       </article>
 
+      <!-- PROJECT 1: AI DR Screening System -->
+      <article class="card card-featured">
+        <div class="card-header">
+          <div>
+            <div class="card-title">AI Diabetic Retinopathy Screening & Biomarker Quantification System</div>
+            <div class="card-subtitle">Jul 2026 – Sep 2026 • Deep Learning & Computer Vision</div>
+          </div>
+          <span class="card-badge">PyTorch • EfficientNet-B0 • UNet++</span>
+        </div>
+        <div class="muted">
+          <p style="margin: 0 0 0.5rem 0; line-height: 1.5; color: #d1d5db;">
+            End-to-end medical-AI clinical decision support system for automated Diabetic Retinopathy (DR) screening, 
+            referable DR triage, and sub-retinal biomarker quantification — integrating <strong>EfficientNet-B0</strong> for 
+            5-stage severity grading, <strong>UNet++ / Depthwise Separable UNet</strong> ensembles for multi-class lesion segmentation 
+            (MA, HE, EX, SE), <strong>ResNet-18</strong> for anatomical landmark localization (Optic Disc & Fovea) and image quality assessment, 
+            calibrated via <strong>Temperature Scaling</strong> and explained using <strong>Grad-CAM</strong> visual saliency maps.
+          </p>
+          <ul style="margin: 0.4rem 0; padding-left: 1.2rem; line-height: 1.5;">
+            <li><strong>Stack:</strong> Python, PyTorch, Torchvision, Segmentation Models PyTorch (SMP), Streamlit, OpenCV, Plotly, NumPy, Pandas, SciPy</li>
+            <li><strong>Architecture:</strong> Multi-Stage CV & Deep Learning Pipeline (Dual IQA & CLAHE Enhancement → Calibrated 5-Class EfficientNet-B0 Grading → 4-Class Lesion Segmentation UNets → Vessel & Landmark Localizer → Grad-CAM XAI → Automated Clinical Reporting)</li>
+            <li><strong>Performance:</strong> 85.7% Sensitivity · 96.5% Specificity for Referable DR (Quadratic Weighted Kappa &kappa; = 0.862) · 40.5% ECE reduction (calibrated ECE: 0.032) · Ultra-fast ~11.5ms GPU / ~35.7ms CPU latency (86.5 FPS)</li>
+            <li><strong>Key Highlights:</strong> Explainable AI (Grad-CAM heatmaps), pixel-level microaneurysm & exudate segmentation, vessel density quantification, Optic Disc & Fovea spatial tracking, confidence calibration, and exportable clinical diagnostic reports.</li>
+          </ul>
+          <div style="margin-top: 0.7rem; font-size: 0.85rem; display: flex; gap: 0.8rem; flex-wrap: wrap;">
+            <span>🌐 <strong>Live App:</strong> <a href="https://dr-screening-system-joy.streamlit.app/" target="_blank" rel="noopener noreferrer">dr-screening-system-joy.streamlit.app</a></span>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT 2: HealthBandhu -->
+      <article class="card card-featured">
+        <div class="card-header">
+          <div>
+            <div class="card-title">HealthBandhu — Hybrid AI Disease Diagnosis & Emergency Triage</div>
+            <div class="card-subtitle">Apr 2026 – Jun 2026 • Hybrid AI & Clinical XAI</div>
+          </div>
+          <span class="card-badge">TensorFlow • Scikit-learn • Streamlit</span>
+        </div>
+        <div class="muted">
+          <p style="margin: 0 0 0.5rem 0; line-height: 1.5; color: #d1d5db;">
+            Explainable hybrid AI framework for multiclass disease screening, emergency risk assessment,
+            and clinical decision support — combining a deep neural network, a tuned Bernoulli Naive Bayes model,
+            an independent rule-based clinical cross-check engine, and occlusion-based XAI to predict across 
+            <strong>754 diseases</strong> from <strong>324 clinical symptoms</strong>, validated on 
+            <strong>246,926 patient records</strong> (49,386 held-out test cohort).
+          </p>
+          <ul style="margin: 0.4rem 0; padding-left: 1.2rem; line-height: 1.5;">
+            <li><strong>Stack:</strong> Python, TensorFlow, Scikit-learn, Streamlit, NumPy, Pandas, ReportLab</li>
+            <li><strong>Architecture:</strong> Hybrid AI Ensemble (DNN + Bernoulli Naive Bayes + Rule-Based Engine + 4-Tier Emergency Triage)</li>
+            <li><strong>Performance:</strong> 87.28% Top-1 · 96.53% Top-3 · 98.32% Top-5 accuracy (99.95% accuracy for high-confidence predictions)</li>
+            <li><strong>Key Highlights:</strong> Occlusion attribution (XAI), emergency red-flag triage, confidence calibration, clinical assistant, and automated PDF medical report export.</li>
+          </ul>
+          <div style="margin-top: 0.7rem; font-size: 0.85rem; display: flex; gap: 0.8rem; flex-wrap: wrap;">
+            <span>🌐 <strong>Live App:</strong> <a href="https://health-bandhu-joy.streamlit.app/" target="_blank" rel="noopener noreferrer">health-bandhu-joy.streamlit.app</a></span>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Additional Projects Grid -->
+    <div class="card-grid" style="margin-top: 1.2rem;">
+      <!-- PROJECT 3: Inventory Management System -->
       <article class="card">
         <div class="card-header">
           <div>
-            <div class="card-title">HealthBandhu — AI Healthcare Assistant</div>
-            <div class="card-subtitle">Apr 2026 – Jun 2026</div>
+            <div class="card-title">Inventory Management System</div>
+            <div class="card-subtitle">2026</div>
           </div>
+          <span class="card-badge">Streamlit • SQLite</span>
         </div>
         <div class="muted">
           <p style="margin: 0 0 0.4rem 0;">
-            Explainable hybrid AI framework for multiclass disease diagnosis, emergency risk assessment,
-            and clinical decision support — combining a deep neural network, an Extra Trees classifier,
-            and a rule-based emergency engine to predict across 754 diseases from 377 clinical symptoms,
-            trained on 246,945 patient records.
+            A database-backed inventory platform for managing products, suppliers, customers,
+            purchases, sales, stock levels, and business reports through an interactive dashboard.
           </p>
           <ul>
-            <li><strong>Stack:</strong> Python, TensorFlow, Scikit-learn, Streamlit, NumPy, Pandas</li>
-            <li><strong>Model:</strong> Hybrid AI (DNN + Extra Trees + rule-based emergency engine)</li>
-            <li><strong>Performance:</strong> 85.70% top-1 accuracy · 99.35% top-10 accuracy</li>
+            <li><strong>Stack:</strong> Python, Streamlit, SQLite, Pandas</li>
+            <li><strong>Features:</strong> Secure login, stock automation, low-stock alerts, CSV exports</li>
+            <li><strong>Business Logic:</strong> Prevents negative stock and maintains audit history</li>
           </ul>
-          <div style="margin-top: 0.4rem; font-size: 0.8rem;">
-            Project Link: <a href="https://huggingface.co/spaces/JoyGhatak/healthbandhu-ai" target="_blank">Hugging Face Space</a>
+          <div style="margin-top: 0.5rem; font-size: 0.82rem;">
+            🌐 <strong>Live Demo:</strong> <a href="https://joyghatakinventorysystem.streamlit.app/" target="_blank">joyghatakinventorysystem.streamlit.app</a>
           </div>
         </div>
       </article>
-      ```html
-<article class="card">
-  <div class="card-header">
-    <div>
-      <div class="card-title">Inventory Management System</div>
-      <div class="card-subtitle">2026</div>
-    </div>
-  </div>
-  <div class="muted">
-    <p style="margin: 0 0 0.4rem 0;">
-      A database-backed inventory platform for managing products, suppliers, customers,
-      purchases, sales, stock levels, and business reports through an interactive dashboard.
-    </p>
-    <ul>
-      <li><strong>Stack:</strong> Python, Streamlit, SQLite, Pandas</li>
-      <li><strong>Features:</strong> Secure login, stock automation, low-stock alerts, CSV exports</li>
-      <li><strong>Business Logic:</strong> Prevents negative stock and maintains transaction history</li>
-    </ul>
-    <div style="margin-top: 0.4rem; font-size: 0.8rem;">
-      Project Link: <a href="https://joyghatakinventorysystem.streamlit.app/" target="_blank">Live Demo</a>
-    </div>
-  </div>
-</article>
-```
 
+      <!-- PROJECT 4: MovieLoop -->
       <article class="card">
         <div class="card-header">
           <div>
             <div class="card-title">MovieLoop — Ticket Booking</div>
             <div class="card-subtitle">Oct 2025 – Dec 2025</div>
           </div>
+          <span class="card-badge">JavaScript • Web</span>
         </div>
         <div class="muted">
           <ul>
-            <li>Designed a secure login and registration system to manage user authentication.</li>
-            <li>Implemented dynamic seat selection with real-time booking updates.</li>
-            <li>Integrated automatic PDF ticket generation for user convenience.</li>
+            <li>Designed a secure authentication system to manage user access and profiles.</li>
+            <li>Implemented dynamic seat layout selection with real-time booking status.</li>
+            <li>Integrated automatic PDF ticket generation and download upon confirmation.</li>
           </ul>
-          <div style="margin-top: 0.4rem; font-size: 0.8rem;">
-            Project Link: <a href="https://joyghatak.github.io/-MovieLoop--Movie-Ticket-Booking/" target="_blank">view project</a>
+          <div style="margin-top: 0.5rem; font-size: 0.82rem;">
+            🔗 <strong>Project Link:</strong> <a href="https://joyghatak.github.io/-MovieLoop--Movie-Ticket-Booking/" target="_blank">View Project Demo</a>
           </div>
         </div>
       </article>
 
+      <!-- PROJECT 5: Inventory Control System -->
       <article class="card">
         <div class="card-header">
           <div>
-            <div class="card-title">Inventory Control System</div>
+            <div class="card-title">Inventory Control System (Frontend)</div>
             <div class="card-subtitle">Oct 2025 – Nov 2025</div>
           </div>
+          <span class="card-badge">HTML/CSS • JS</span>
         </div>
         <div class="muted">
           <ul>
-            <li>Built a dashboard to manage products, suppliers, and customers efficiently.</li>
-            <li>Implemented sales and purchase tracking with basic analytics and visualizations.</li>
-            <li>Aimed at improving visibility and control over inventory operations.</li>
+            <li>Built an intuitive user interface to manage products, suppliers, and customer orders.</li>
+            <li>Implemented sales and purchase tracking with interactive data visualization widgets.</li>
+            <li>Optimized layout for rapid stock monitoring and streamlined operations.</li>
           </ul>
-          <div style="margin-top: 0.4rem; font-size: 0.8rem;">
-            Project Link: <a href="https://joyghatak.github.io/Inventory-Frontend/" target="_blank">view project</a>
+          <div style="margin-top: 0.5rem; font-size: 0.82rem;">
+            🔗 <strong>Project Link:</strong> <a href="https://joyghatak.github.io/Inventory-Frontend/" target="_blank">View Project Demo</a>
           </div>
         </div>
       </article>
 
+      <!-- PROJECT 6: Fast Results -->
       <article class="card">
         <div class="card-header">
           <div>
-            <div class="card-title">Fast Results — Exam Evaluator</div>
+            <div class="card-title">Fast Results — Automated Exam Evaluator</div>
             <div class="card-subtitle">Dec 2025</div>
           </div>
+          <span class="card-badge">Node.js • MongoDB</span>
         </div>
         <div class="muted">
           <ul>
-            <li>Web-based automated exam evaluation system built to simplify result processing for educators.</li>
-            <li>Node.js and MongoDB backend evaluates submitted descriptive answers.</li>
-            <li>Stores scores, shows performance instantly, and generates class rankings.</li>
+            <li>Web-based automated exam evaluation system built to streamline result processing for educators.</li>
+            <li>Node.js and MongoDB backend to evaluate descriptive submissions and calculate scores.</li>
+            <li>Automated instant performance breakdowns and rank list generation.</li>
           </ul>
-          <div style="margin-top: 0.4rem; font-size: 0.8rem;">
-            Project Link: <a href="#" target="_blank">Add your repository / demo link</a>
+          <div style="margin-top: 0.5rem; font-size: 0.82rem;">
+            🔗 <strong>Repository:</strong> <a href="https://github.com/joyghatak" target="_blank">github.com/joyghatak</a>
           </div>
         </div>
       </article>
